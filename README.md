@@ -2,7 +2,7 @@
 Construction of CNN model for detection of pneumonia in x-rays from scratch
 
 ## License
-[MIT LICENSE](https://github.com/smarthardik10/Pima-Indians-Diabetes---Prediction-KNN-Visualization/blob/master/LICENSE)
+[MIT LICENSE](https://github.com/smarthardik10/Medical-X-ray-Image-Classification-using-Convolutional-Neural-Network/blob/main/MIT%20License)
 
 
 
