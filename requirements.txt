@@ -1,5 +1,4 @@
 pillow
 tensorflow
 numpy
-pil
 streamlit
