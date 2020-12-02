@@ -1,4 +1,4 @@
- 
+%%writefile webapp.py
 import streamlit as st
 import numpy as np
 from PIL import Image 
@@ -6,7 +6,7 @@ from tensorflow.keras.models import load_model
 import tensorflow as tf
  
 from tempfile import NamedTemporaryFile
-from keras.preprocessing.image import load_img
+from tensorflow.keras.preprocessing import image 
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 @st.cache(allow_output_mutation=True)
@@ -32,7 +32,7 @@ buffer = temp
 temp_file = NamedTemporaryFile(delete=False)
 if buffer:
     temp_file.write(buffer.getvalue())
-    st.write(load_img(temp_file.name))
+    st.write(image.load_img(temp_file.name))
 
 
 if buffer is None:
@@ -40,7 +40,7 @@ if buffer is None:
 
 else:
 
-  from tensorflow.keras.preprocessing import image
+ 
 
   hardik_img = image.load_img(temp_file.name, target_size=(500, 500),color_mode='grayscale')
 
