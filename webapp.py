@@ -1,51 +1,69 @@
+ 
 import streamlit as st
 import numpy as np
-from PIL import Image, ImageOps
+from PIL import Image 
 from tensorflow.keras.models import load_model
+import tensorflow as tf
+ 
+from tempfile import NamedTemporaryFile
+from keras.preprocessing.image import load_img
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 @st.cache(allow_output_mutation=True)
 
 def loading_model():
-  fp = 'cnn_pneu_vamp_model.h5'
+  fp = "cnn_pneu_vamp_model.h5"
   model_loader = load_model(fp)
   return model_loader
 
-model = loading_model()
+cnn = loading_model()
 st.write("""
 # X-Ray Classification (Pneumonia/Normal)
 """)
 
-file = st.file_uploader("Upload X-Ray",type=["jpg","png"])
 
-def preprocess_predict(image_data,cnn):
+
+  
+
+
+temp = st.file_uploader("Upload X-Ray Image")
+
+buffer = temp
+temp_file = NamedTemporaryFile(delete=False)
+if buffer:
+    temp_file.write(buffer.getvalue())
+    st.write(load_img(temp_file.name))
+
+
+if buffer is None:
+  st.text("Oops! that doesn't look like an image. Try again.")
+
+else:
+
+  from tensorflow.keras.preprocessing import image
+
+  hardik_img = image.load_img(temp_file.name, target_size=(500, 500),color_mode='grayscale')
 
   # Preprocessing the image
-  hardik_img = image_data.resize(500,500)
-  hardik_img = ImageOps.grayscale(hardik_img )
-  
-  pp_hardik_img = np.asarray(hardik_img)
+  pp_hardik_img = image.img_to_array(hardik_img)
   pp_hardik_img = pp_hardik_img/255
   pp_hardik_img = np.expand_dims(pp_hardik_img, axis=0)
 
   #predict
   hardik_preds= cnn.predict(pp_hardik_img)
-
-  if hardik_preds>= 0.5: 
+  if hardik_preds>= 0.5:
     out = ('I am {:.2%} percent confirmed that this is a Pneumonia case'.format(hardik_preds[0][0]))
-    
+  
   else: 
     out = ('I am {:.2%} percent confirmed that this is a Normal case'.format(1-hardik_preds[0][0]))
 
-  return out
-
-
-if file is None:
-  st.text("Oops! that doesn't look like an image. Try again.")
-
-else:
-  image = Image.open(file)
+  st.success(out)
+  
+  image = Image.open(temp)
   st.image(image,use_column_width=True)
-  prediction = preprocess_predict(image,model)
-  st.success(prediction)
+          
+            
+
+  
+
   
