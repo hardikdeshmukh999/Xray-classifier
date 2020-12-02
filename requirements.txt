@@ -2,5 +2,4 @@ pillow
 tensorflow
 numpy
 streamlit
-keras
 h5py
