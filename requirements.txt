@@ -2,3 +2,5 @@ pillow
 tensorflow
 numpy
 streamlit
+tempfile
+keras
