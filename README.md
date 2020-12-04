@@ -17,3 +17,6 @@ Blog link:
 Notebook link:
 [![Open In Colab: ](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1J6nM1LlGE-DW93QO-yFkeBSGv9OQoHSC?usp=sharing)
 
+App Deployed on Streamlit Share:
+[Link](https://share.streamlit.io/smarthardik10/xray-classifier/main/webapp.py)
+
