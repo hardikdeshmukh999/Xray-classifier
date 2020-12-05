@@ -18,7 +18,7 @@ def loading_model():
 
 cnn = loading_model()
 st.write("""
-# X-Ray Classification (Pneumonia/Normal)
+# X-Ray Classification (Pneumonia/Normal) bu Hardik :)
 """)
 
 
@@ -27,6 +27,7 @@ st.write("""
 
 
 temp = st.file_uploader("Upload X-Ray Image")
+temp = temp.decode()
 
 buffer = temp
 temp_file = NamedTemporaryFile(delete=False)
