@@ -18,7 +18,8 @@ def loading_model():
 
 cnn = loading_model()
 st.write("""
-# X-Ray Classification (Pneumonia/Normal) bu Hardik :)
+# X-Ray Classification [Pneumonia/Normal]
+by Hardik :)
 """)
 
 
