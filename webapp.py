@@ -28,7 +28,6 @@ by Hardik :)
 
 
 temp = st.file_uploader("Upload X-Ray Image")
-temp = temp.decode()
 
 buffer = temp
 temp_file = NamedTemporaryFile(delete=False)
