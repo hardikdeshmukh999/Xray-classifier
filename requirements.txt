@@ -1,5 +1,4 @@
 tensorflow
 pillow
 numpy
-streamlit
 h5py
